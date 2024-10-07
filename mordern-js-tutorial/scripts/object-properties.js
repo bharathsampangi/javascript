@@ -1,0 +1,85 @@
+// let user = {
+//     name: 'John'
+// }
+
+// let descriptor = Object.getOwnPropertyDescriptor(user, 'name')
+
+// alert(JSON.stringify(descriptor, null, 2))
+
+// let user = {}
+
+// Object.defineProperty(user, 'name', { value: 'John' });
+
+// let descriptor = Object.getOwnPropertyDescriptor(user, 'name');
+
+// alert(JSON.stringify(descriptor, null, 2))
+
+// user.name = 'Nemo';
+
+// let descriptor1 = Object.getOwnPropertyDescriptor(user, 'name')
+
+// alert(JSON.stringify(descriptor1, null, 2))
+
+// let user = {
+//     name: 'John',
+//     toString() {
+//         return this.name
+//     }
+// }
+
+// for(let key in user) alert(key)
+
+// let user = {
+//     name: 'John',
+//     toString() {
+//         return this.name;
+//     }
+// }
+
+// Object.defineProperty(user, 'toString', {
+//     enumerable: false
+// })
+
+// for(let key in user) alert(key)
+
+// alert(Object.keys(user))
+
+// let descriptor = Object.getOwnPropertyDescriptor(Math, 'PI');
+
+// alert(JSON.stringify(descriptor, null, 2))
+
+// let user = {}
+
+// Object.defineProperty(user, 'name', {
+//     value: 'John',
+//     writable: false,
+//     configurable: false
+// })
+
+// Object.defineProperty(user, 'name', {
+//     writable: true
+// })
+
+// let user = {}
+
+// Object.defineProperties(user, {
+//     name: { value: 'John', writable: false },
+//     surname: { value: 'Smith', writable: false }
+// })
+
+// let descriptor = Object.getOwnPropertyDescriptors(user)
+
+// alert(JSON.stringify(descriptor, null, 2))
+
+let user = {}
+
+Object.defineProperties(user, {
+    name: { value: 'John', writable: false },
+    surname: { value: 'Smith', writable: false }
+})
+
+let clone = Object.defineProperties({}, Object.getOwnPropertyDescriptors(user))
+
+let descriptor = Object.getOwnPropertyDescriptors(clone)
+
+alert(JSON.stringify(descriptor, null, 2))
