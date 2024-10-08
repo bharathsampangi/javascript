@@ -269,6 +269,108 @@
 
 // alert(rabbit.constructor === Rabbit)
 
-function Rabbit() {}
+// function Rabbit() {}
 
-Rabbit.prototype.jumps = true
+// Rabbit.prototype.jumps = true
+
+// let arr = [1, 2, 3]
+
+// alert(arr.__proto__ === Array.prototype)
+
+// alert(arr.__proto__.__proto__ === Object.prototype)
+
+// alert(arr.__proto__.__proto__.__proto__)
+
+// let arr = [1, 2, 3]
+
+// alert(arr)
+
+// function f() {}
+
+// alert(f.__proto__ == Function.prototype)
+
+// alert(f.__proto__.__proto__ == Object.prototype)
+
+// String.prototype.show = function() {
+//     alert(this)
+// }
+
+// 'BOOM!'.show()
+
+// if(!String.prototype.repeat) {
+//     String.prototype.repeat = function(n) {
+//         return new Array(n+1).join(this)
+//     }
+// }
+
+// alert('La'.repeat(3))
+
+// Function.prototype.defer = function(ms) {
+//     setTimeout(this, ms)
+// }
+
+// function f() {
+//     alert('Hello!')
+// }
+
+// f.defer(1000)
+
+// Function.prototype.defer = function(ms) {
+//     let f = this
+//     return function(...args) {
+//         setTimeout(() => {
+//             f.apply(this, args)
+//         }, ms)
+//     }
+// }
+
+// function f(a, b) {
+//     alert(a + b)
+// }
+
+// f.defer(1000)(1, 2)
+
+// let animal = {
+//     eats: true
+// }
+
+// let rabbit = Object.create(animal)
+
+// alert(rabbit.eats)
+
+// alert(Object.getPrototypeOf(rabbit) === animal)
+
+// Object.setPrototypeOf(rabbit, {})
+
+// alert(rabbit.eats)
+
+// let animal = {
+//     eats: true
+// }
+
+// let rabbit = Object.create(animal, {
+//     jumps: {
+//         value: true
+//     }
+// })
+
+// alert(rabbit.jumps)
+
+// let clone = Object.create(Object.getPrototypeOf(obj), Object.getOwnPropertyDescriptors(obj))
+
+let dictionary = Object.create(null, {
+    toString: {
+        value() {
+            return Object.keys(this).join()
+        }
+    }
+})
+
+dictionary.apple = 'Apple'
+dictionary.__proto__ = 'test'
+
+for(let key in dictionary) {
+    alert(key)
+}
+
+alert(dictionary)
