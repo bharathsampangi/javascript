@@ -235,3 +235,156 @@ function loadScript(src) {
 // fetch('https://jsonplaceholder.typicode.com/users')
 //     .then(response => response.json())
 //     .then(json => alert(json))
+
+// fetch('sample/user.json')
+//     .then(response => response.json())
+//     .then(user => fetch(`https://api.github.com/users/${user.name}`))
+//     .then(response => response.json())
+//     .then(githubUser => {
+//         let img = document.createElement('img')
+//         img.src = githubUser.avatar_url
+//         img.className = 'promise-avatar-example'
+//         document.body.append(img)
+
+//         setTimeout(() => img.remove(), 3000)
+//     })
+
+// fetch('sample/user.json')
+//     .then(response => response.json())
+//     .then(user => fetch(`https://api.github.com/users/${user.name}`))
+//     .then(response => response.json())
+//     .then(githubUser => new Promise((resolve) => {
+//         let img = document.createElement('img')
+//         img.src = githubUser.avatar_url
+//         img.className = 'promise-avatar-example'
+//         document.body.append(img)
+
+//         setTimeout(() => {
+//             img.remove()
+//             resolve(githubUser)
+//          }, 3000)
+//     }))
+//     .then(githubUser => alert(`Finished showing ${githubUser.name}`))
+
+// function loadJson(url) {
+//     return fetch(url)
+//         .then(response => response.json())
+// }
+
+// function loadGithubUser(name) {
+//     return fetch(`https://api.github.com/users/${name}`)
+//         .then(response => response.json())
+// }
+
+// function showAvatar(githubUser) {
+//     return new Promise(function(resolve) {
+//         let img = document.createElement('img');
+//         img.src = githubUser.avatar_url;
+//         img.className = 'promise-avatar-example';
+//         document.body.append(img);
+
+//         setTimeout(() => {
+//             img.remove();
+//             resolve(githubUser);
+//         }, 3000);
+//     })
+// }
+
+// loadJson('sample/user.json')
+//     .then(user => loadGithubUser(user.name))
+//     .then(showAvatar)
+//     .then(githubUser => alert(`Finished showing ${githubUser.name}`))
+
+// fetch('sample/user.json')
+// .then(response => response.json())
+// .then(user => fetch(`https://api.github.com/users/${user.name}`)) .then(response => response.json())
+// .then(githubUser => new Promise((resolve, reject) => {
+// let img = document.createElement('img'); img.src = githubUser.avatar_url; img.className = "promise-avatar-example"; document.body.append(img);
+// setTimeout(() => { img.remove(); resolve(githubUser);
+// }, 3000); }))
+// .catch(error => alert(error.message));
+
+// new Promise(() => {
+//     throw new Error('Whoops!!')
+// }).catch(alert)
+
+// new Promise((resolve) => {
+//     resolve('ok')
+// }).then(() => {
+//     throw new Error('Whoops!')
+// }).catch(alert)
+
+// new Promise((resolve) => {
+//     resolve('ok')
+// }).then(() => {
+//     blabla()
+// }).catch(alert)
+
+// new Promise(() => {
+//     throw new Error('Whoops!')
+// }).catch(function(error) {
+//     alert('The error is handled, continued normally')
+// }).then(() => alert('Next successful handler runs'))
+
+// new Promise(() => {
+//     throw new Error('Whoops!')
+// }).catch(function(error) {
+//     if(error instanceof URIError) {
+
+//     } else {
+//         alert("Can't handle such error")
+
+//         throw error
+//     }
+// }).then(() => {
+
+// }).catch((error) => {
+//     alert(`The unknown error has occured: ${error}`)
+// })
+
+// window.addEventListener('unhandledrejection', function(event) {
+//     alert(event.promise)
+//     alert(event.reason)
+// })
+
+// new Promise(function() {
+//     throw new Error('Whoops!')
+// })
+
+// Promise.all([
+//     new Promise(resolve => setTimeout(() => resolve(1)), 3000),
+//     new Promise(resolve => setTimeout(() => resolve(2), 2000)),
+//     new Promise(resolve => setTimeout(() => resolve(3), 1000))
+// ]).then(alert)
+
+// let urls = [ 'https://api.github.com/users/iliakan', 'https://api.github.com/users/remy', 'https://api.github.com/users/jeresig'
+// ];
+
+// let requests = urls.map(url => fetch(url))
+
+// Promise.all(requests)
+// .then(responses => responses.forEach(response => alert(`${response.url}: ${response.status}`)))
+
+// let names = ['iliakan', 'remy', 'jeresig']
+
+// let requests = names.map(name => fetch(`https://api.github.com/users/${name}`))
+
+// Promise.all(requests)
+//     .then(responses => {
+//         responses.forEach(response => alert(`${response.url}: ${response.status}`))
+//         return responses
+//     }).then(responses => Promise.all(responses.map(r => r.json())))
+//     .then(users => users.forEach(user => alert(user.name)))
+
+// Promise.all([
+//     new Promise(resolve => setTimeout(resolve(1), 2000)),
+//     new Promise((resolve, reject) => setTimeout(reject(new Error('Whoops!'), 3000))),
+//     new Promise(resolve => setTimeout(resolve(2), 1000))
+// ]).then(alert)
+// .catch(alert)
+
+let urls = [ 'https://api.github.com/users/iliakan', 'https://api.github.com/users/remy', 'https://no-such-url'
+];
+
+Promise.allSettled(urls.map(url => fetch(url)))
+    
