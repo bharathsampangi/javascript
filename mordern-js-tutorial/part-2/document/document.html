@@ -1,0 +1,508 @@
+<!-- <!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>About elks</title>
+</head>
+
+<body>
+    The truth about elks.
+</body>
+
+</html> -->
+<!-- <!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>About elks</title>
+</head>
+
+<body>The truth about elks.</body>
+
+</html> -->
+
+<!-- <p>Hello 
+<li>Mom 
+<li>and 
+<li>Dad -->
+
+<!-- <table id="table"><tr><td>1</td></tr></table> -->
+
+<!-- <html>
+    <body>
+        <ul>
+            <li>Information</li>
+        </ul>
+
+        <div>End</div>
+
+        <script>
+            for(let i=0; i < document.body.childNodes.length; i++) {
+                alert(document.body.childNodes[i])
+            }
+        </script>
+        ...more stuff...
+    </body>
+</html> -->
+
+<html>
+    <body>
+        <ul>
+            <li>Information</li>
+        </ul>
+
+        <div>End</div>
+
+        <script>
+            alert(document.childNodes[0] === document.firstChild)
+            alert(document.childNodes[document.childNodes.length - 1] === document.lastChild)
+        </script>
+        ...more stuff...
+    </body>
+</html>
+
+<html>
+    <body>
+        <ul>
+            <li>Information</li>
+        </ul>
+
+        <div>End</div>
+
+        <script>
+            // for(let node of document.body.childNodes) {
+            //     alert(node)
+            // }
+
+            alert(Array.from(document.body.childNodes))
+        </script>
+        ...more stuff...
+    </body>
+</html>
+
+<html><head></head><body><script>
+    alert(document.body.parentNode === document.documentElement)
+
+    alert(document.head.nextSibling)
+
+    alert(document.body.previousSibling)
+</script></body></html>
+
+<html>
+    <body>
+        <ul>
+            <li>Information</li>
+        </ul>
+
+        <div>End</div>
+
+        <script>
+            // alert(document.documentElement.parentNode)
+            // alert(document.documentElement.parentElement)
+
+            // while(elem = elem.parentElement) {
+            //     alert(elem)
+            // }
+        </script>
+        ...more stuff...
+    </body>
+</html>
+
+<html>
+    <body>
+        <div>Begin</div>
+
+        <ul>
+            <li>Information</li>
+        </ul>
+
+        <div>End</div>
+
+        <script>
+            for(let elem of document.body.children) {
+                alert(elem)
+            }
+        </script>
+        ...more stuff...
+    </body>
+</html>
+
+<body>
+    <table id="'table">
+        <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+        <tr>
+            <td>three</td>
+            <td>four</td>
+        </tr>
+    </table>
+
+    <script>
+        var table = document.getElementById('table')
+        alert(table.rows[0].cells[1].innerHTML)
+    </script>
+</body>
+
+<html>
+    <body>
+        <div>Begin</div>
+
+        <ul>
+            <li>Information</li>
+        </ul>
+
+        <div>End</div>
+
+        <script>
+            alert(document.body.constructor.name)
+
+            console.dir(document.body.firstElementChild)
+        </script>
+        ...more stuff...
+    </body>
+</html>
+
+<html> <body><!-- comment -->
+    <script>
+        alert(document.body.firstChild.tagName)
+        alert(document.body.firstChild.nodeName)
+
+        alert(document.tagName)
+        alert(document.nodeName)
+    </script>
+</body></html>
+
+<html><body>
+    <!-- <p>A paragraph</p>
+    <div>A div</div> -->
+
+    <script>
+        // alert(document.body.innerHTML)
+        // document.body.innerHTML = 'The new BODY!'
+
+        document.body.innerHTML = '<b>test'
+        alert(document.body.innerHTML)
+    </script>
+</body></html>
+
+<html><body><div id="elem">Hello <b>World</b></div>
+    <script>
+    alert(elem.outerHTML); // <div id="elem">Hello <b>World</b></div>
+    </script></body></html>
+
+<div>Hello, world!</div>
+<script>
+let div = document.querySelector('div');
+// replace div.outerHTML with <p>...</p>
+div.outerHTML = '<p>A new element!</p>'; // (*)
+// Wow! The div is still the same!
+alert(div.outerHTML); // <div>Hello, world!</div> </script>
+
+<body>
+    Hello
+    <!-- Comment -->
+     <script>
+        let text = document.body.firstChild
+        alert(text.data)
+
+        let comment = text.nextSibling
+        alert(comment.data)
+     </script>
+</body>
+
+<div id="news"> <h1>Headline!</h1> <p>Martians attack people!</p>
+</div>
+<script>
+// Headline! Martians attack people! 
+alert(news.textContent);
+</script>
+
+<div id="elem1"></div> <div id="elem2"></div>
+<script>
+let name = prompt("What's your name?", "<b>Winnie-the-pooh!</b>");
+elem1.innerHTML = name;
+elem2.textContent = name; </script>
+
+<div>Both divs below are hidden</div>
+<div hidden>With the attribute "hidden"</div>
+<div id="elem">JavaScript assigned the property "hidden"</div> 
+<script>
+    elem.hidden = true; 
+</script>
+
+<div id="elem">A blinking element</div>
+<script>
+setInterval(() => elem.hidden = !elem.hidden, 1000);
+</script>
+
+<input type="text" id="elem" value="value" />
+
+<script>
+    alert(elem.type)
+    alert(elem.id)
+    alert(elem.value)
+</script>
+
+<body>
+    <script>
+        // document.body.myData = {
+        //     name: 'Caesar',
+        //     title: 'Imperator'
+        // }
+    
+        // alert(document.body.myData.title)
+
+        // document.body.sayTagName = function() {
+        //     alert(this.tagName)
+        // }
+
+        // document.body.sayTagName()
+
+        // Element.prototype.sayHi = function() {
+        //     alert(`Hello, I'm ${this.tagName}`)
+        // }
+
+        // document.documentElement.sayHi()
+        // document.body.sayHi()
+    </script>
+</body>
+
+<body id="test" something="non-standard">
+    <script>
+        alert(document.body.id)
+        alert(document.body.something)
+    </script>
+</body>
+
+<body id="body" type="...">
+    <input id="input" type="text" />
+    <script>
+        alert(input.type)
+        alert(body.type)
+    </script>
+</body>
+
+<body id="test" something="non-standard">
+    <script>
+        alert(document.body.getAttribute('something'))
+    </script>
+</body>
+
+<body>
+    <div id="elem" about="Elephant"></div>
+
+    <script>
+        alert(elem.getAttribute('About'))
+
+        elem.setAttribute('Test', 123)
+
+        alert(elem.outerHTML)
+
+        for(let attr of elem.attributes) {
+            alert(`${attr.name} = ${attr.value}`)
+        }
+    </script>
+</body>
+
+<input />
+
+<script>
+    let input = document.querySelector('input')
+
+    input.setAttribute('id', 'id')
+    alert(input.id)
+
+    input.id = 'newId'
+    alert(input.getAttribute('id'))
+</script>
+
+<input />
+
+<script>
+    let input = document.querySelector('input')
+
+    input.setAttribute('value', 'text')
+    alert(input.value)
+
+    input.value = 'newValue'
+    alert(input.getAttribute('value'))
+</script>
+
+<input />
+
+<script>
+    let input = document.querySelector('input')
+
+    input.setAttribute('value', 'text')
+    alert(input.value)
+
+    input.value = 'newValue'
+    alert(input.getAttribute('value'))
+</script>
+
+<input id="input" type="checkbox" checked /> checkbox
+
+<script>
+    alert(input.getAttribute('checked'))
+    alert(input.checked)
+</script>
+
+<div id="div" style="color:red;font-size: 120%;">Hello</div>
+
+<script>
+    alert(div.getAttribute('style'))
+
+    alert(div.style)
+    alert(div.style.color)
+</script>
+
+<a id="a" href="#hello">link</a> <script>
+    // attribute alert(a.getAttribute('href')); // #hello
+    // property
+    alert(a.href ); // full URL in the form http://site.com/page#hello </script>
+
+<div show-info="name"></div>
+<div show-info="age"></div>
+
+<script>
+    let user = {
+        name: "Pete",
+        age: 25
+    }
+
+    for(let div of document.querySelectorAll('[show-info]')) {
+        let field = div.getAttribute('show-info')
+        div.innerHTML = user[field]
+    }
+</script>
+
+<body><style>
+    .order[order-state="new"] {
+        color: green
+    }
+
+    .order[order-state="pending"] {
+        color: blue
+    }
+
+    .order[order-state="canceled"] {
+        color: red
+    }
+</style>
+
+<div class="order" order-state="new">
+    A new order
+</div>
+
+<div class="order" order-state="pending">
+    A pending order
+</div>
+
+<div class="order" order-state="canceled">
+    A canceled order
+</div>
+</body>
+
+<style>
+    .order[data-order-state='new'] {
+        color: green
+    }
+
+    .order[data-order-state='pending'] {
+        color: blue
+    }
+
+    .order[data-order-state='cancelled'] {
+        color: red
+    }
+</style>
+
+<div id="order" class="order" data-order-state="new">
+    A new order
+</div>
+
+<script>
+    alert(order.dataset.orderState)
+
+    order.dataset.orderState = 'pending'
+</script>
+
+<style>
+    .alert {
+        padding: 15px;
+        border: 1px solid #d6e9c6;
+        border-radius: 4px;
+        color: #3c763d;
+        background-color: #dff0d8;
+    }
+</style>
+<body></body>
+<script>
+    let div = document.createElement('div')
+    div.className = "alert alert-success"
+    div.innerHTML = "<strong>Hi there!</strong> You've read an important message"
+
+    document.body.append(div)
+</script>
+
+<ol id="list">
+    <li>0</li>
+    <li>1</li>
+    <li>2</li>
+</ol>
+
+<script>
+    let newLi = document.createElement('li')
+    newLi.innerHTML = 'Hello, world!'
+    list.append(newLi)
+</script>
+
+<ol id="list">
+    <li>0</li>
+    <li>1</li>
+    <li>2</li>
+</ol>
+
+<script>
+    let newLi = document.createElement('li')
+    newLi.innerHTML = 'Hello, world!'
+    
+
+    list.insertBefore(newLi, list.children[1])
+</script>
+
+<ol id="list">
+    <li>0</li>
+    <li>1</li>
+    <li>2</li>
+</ol>
+
+<script>
+    let newLi = document.createElement('li')
+    newLi.innerHTML = 'Hello, world!'
+    
+
+    list.replaceChild(newLi, list.children[1])
+</script>
+
+<ol id="ol">
+    <li>0</li>
+    <li>1</li>
+    <li>2</li>
+</ol>
+
+<script>
+    ol.before('before')
+
+    ol.after('after')
+
+    let prepend = document.createElement('li')
+    prepend.innerHTML = 'prepend'
+    ol.prepend(prepend)
+
+    let append = document.createElement('li')
+    append.innerHTML = 'append'
+    ol.append(append)
+</script>
