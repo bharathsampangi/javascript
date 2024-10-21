@@ -1,0 +1,53 @@
+<input value="Click me" onClick="countRabbits()" type="button" />
+
+<script>
+    function countRabbits() {
+        for(let i=1; i<=3; i++) {
+            alert("Rabbit number "+ i)
+        }
+    }
+</script>
+
+<body>
+    <input id="elem" type="button" value="Click me" />
+
+    <script>
+        elem.onclick = function() {
+            alert('Thank you')
+        }
+    </script>
+</body>
+
+<body>
+    <input id="elem" type="button" onclick="alert('Before')" value="Click me" />
+
+    <script>
+        elem.onclick = function() {
+            alert('After')
+        }
+
+        function sayThanks() {
+            alert('Thanks!')
+        }
+
+        elem.onclick = sayThanks
+    </script>
+</body>
+
+<button onclick="alert(this.innerHTML)">Click me</button>
+
+<input id="elem" type="button" value="Click me" />
+
+<script>
+    function handler1() {
+        alert('Thanks!')
+    }
+
+    function handler2() {
+        alert('Thanks again!')
+    }
+
+    elem.onclick = () => alert('Hello')
+    elem.addEventListener('click', handler1)
+    elem.addEventListener('click', handler2)
+</script>

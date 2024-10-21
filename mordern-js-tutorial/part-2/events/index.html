@@ -1,0 +1,18 @@
+<style>
+    input {
+        transition: width 1s;
+        width: 100px;
+    }
+
+    .wide {
+        width: 300px;
+    }
+</style>
+
+<input type="button" id="elem" onclick="this.classList.toggle('wide')" value="Click Me" />
+
+<script>
+    elem.ontransitionend = function() {
+        alert('DOM property')
+    }
+</script>
