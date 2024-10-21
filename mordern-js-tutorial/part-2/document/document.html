@@ -529,3 +529,212 @@ setInterval(() => elem.hidden = !elem.hidden, 1000);
             <strong>Hi there!</strong> You've read an important message</div>`)
     </script>
 </body>
+
+<style>
+    .alert {
+        padding: 15px;
+        border: 1px solid #d6e9c6; 
+        border-radius: 4px; 
+        color: #3c763d; 
+        background-color: #dff0d8;
+    }
+</style>
+
+<div class="alert" id="div">
+    <strong>Hi there!</strong>You've read an important message
+</div>
+
+<script>
+    let div2 = div.cloneNode(true)
+    div2.querySelector('strong').innerHTML = 'Bye there!'
+    div.after(div2)
+</script>
+
+<ul id="ul"></ul>
+
+<script>
+    function getListContent() {
+        let fragment = new DocumentFragment()
+
+        for(let i=1; i <= 3; i++) {
+            let li = document.createElement('li')
+            li.append(i)
+            fragment.append(li)
+        }
+
+        return fragment
+    }
+
+    ul.append(getListContent())
+</script>
+
+<ul id="ul"></ul>
+
+<script>
+    function getListContent() {
+        let result = []
+
+        for(let i=1; i<=3; i++) {
+            let li = document.createElement('li')
+            li.append(i)
+            result.push(li)
+        }
+
+        return result
+    }
+
+    ul.append(...getListContent())
+</script>
+
+<div id="first">First</div>
+<div id="second">Second</div>
+
+<script>
+    second.after(first)
+</script>
+
+<style>
+    .alert {
+        padding: 15px;
+        border: 1px solid #d6e9c6; 
+        border-radius: 4px; 
+        color: #3c763d; 
+        background-color: #dff0d8;
+    }
+</style>
+<body>
+    <script>
+        let div = document.createElement('div')
+        div.className = 'alert alert-success'
+        div.innerHTML = "<strong>Hi there!</strong> You've read an important message"
+
+        document.body.append(div)
+        setTimeout(() => div.remove(), 1000)
+    </script>
+</body>
+
+<p>Somewhere in the page...</p>
+
+<script>
+    document.write('<b>Hello from JS</b>')
+</script>
+
+<p>The end</p>
+
+<p>After one second the contents of this page will be replaced...</p>
+<script>
+    setTimeout(() => document.write('<b>...By this.</b>'), 1000)
+</script>
+
+<body class="main page">
+    <script>
+        document.body.classList.add('article')
+        alert(document.body.className)
+    </script>
+</body>
+
+<body class="main page">
+    <script>
+        for(let name of document.body.classList) {
+            alert(name)
+        }
+    </script>
+</body>
+
+<div id="div">Button</div>
+
+<script>
+    div.style.cssText =  `color: red !important;
+    background-color: yellow;
+    width: 100px;
+    text-align: center;`
+
+    alert(div.style.cssText)
+</script>
+
+<head>
+    <style>
+        body {
+            color: red;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    The red text
+    <script>
+        alert(document.body.style.color)
+        alert(document.body.style.marginTop)
+    </script>
+</body>
+
+<head>
+    <style>
+        body {
+            color: red;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    The red text
+    <script>
+        let computedStyle = getComputedStyle(document.body)
+
+        alert(computedStyle.marginTop)
+        alert(computedStyle.color)
+    </script>
+</body>
+
+<main style="position: relative" id="main">
+    <article>
+        <div id="example" style="position: absolute; left: 180px; top: 180px">...</div>
+    </article>
+</main>
+
+<script>
+    alert(example.offsetParent.id)
+    alert(example.offsetLeft)
+    alert(example.offsetTop)
+</script>
+
+<script>
+    let centerX = document.documentElement.clientWidth / 2
+    let centerY = document.documentElement.clientHeight / 2
+    
+    let elem = document.elementFromPoint(centerx, centerY)
+    
+    elem.style.background = "red"
+    alert(elem.tagName)
+</script>
+
+<body>
+    <div id="coords-show-mark">
+        ME
+    </div>
+    <script>
+        let elem = document.getElementById("coords-show-mark")
+
+        function createMessageUnder(elem, html) {
+            let message = document.createElement('div')
+
+            message.style.cssText = "position: fixed; color: red"
+
+            let coords = elem.getBoundingClientRect()
+
+            message.style.left = coords.left + "px"
+
+            message.style.right = coords.right + "px"
+
+            message.innerHTML = html
+
+            return message
+        }
+
+        let message = createMessageUnder(elem, 'Hello World!')
+        document.body.append(message)
+        setTimeout(() => message.remove(), 5000)
+    </script>
+</body>
