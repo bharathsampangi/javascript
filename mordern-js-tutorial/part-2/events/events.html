@@ -51,3 +51,112 @@
     elem.addEventListener('click', handler1)
     elem.addEventListener('click', handler2)
 </script>
+
+<style>
+    input {
+        transition: width 1s;
+        width: 100px;
+    }
+
+    .wide {
+        width: 300px;
+    }
+</style>
+
+<input type="button" id="elem" onclick="this.classList.toggle('wide')" value="Click Me" />
+
+<script>
+    elem.ontransitionend = function() {
+        alert('DOM property')
+    }
+
+    elem.addEventListener('transitionend', function(){
+        alert('addEventListener')
+    })
+</script>
+
+<input type="button" value="Click me" id="elem" />
+
+<script>
+    elem.onclick = function(event) {
+        alert(event.type + "at" + event.currentTarget)
+        alert("Coordinates: " + event.clientX + " : " + event.clientY)
+    }
+</script>
+
+<input type="button" value="Click me" id="elem" onclick="alert(event.type)"/>
+
+<button id="elem">Click me</button>
+
+<script>
+    elem.addEventListener('click', {
+        handleEvent(event) {
+            alert(event.type + " at " + event.currentTarget)
+        }
+    })
+</script>
+
+<button id="elem">Click me</button>
+
+<script>
+    class Menu {
+        handleEvent(event) {
+            switch(event.type) {
+                case 'mousedown':
+                    elem.innerHTML = 'Mouse buton pressed';
+                    break;
+                case 'mouseup':
+                    elem.innerHTML = 'Mouse button released'
+                    break;
+            }
+        }
+    }
+
+    let menu = new Menu()
+    elem.addEventListener('mouseup', menu)
+    elem.addEventListener('mousedown', menu)
+</script>
+
+<button id="elem">Click me</button>
+
+<script>
+    class Menu {
+        handleEvent(event) {
+            let method = "on" + event.type[0].toUpperCase() + event.type.slice(1)
+            this[method](event)
+        }
+
+        onMousedown() {
+            elem.innerHTML = 'Mouse button pressed'
+        }
+
+        onMouseup() {
+            elem.innerHTML = "Mouse button released"
+        }
+    }
+
+    let menu1 = new Menu()
+    elem.addEventListener('mousedown', menu1)
+    elem.addEventListener('mouseup', menu1)
+</script>
+
+<div onclick="alert('The handler!')">
+    <em>If you click on <code>EM</code>, the handler on <code>DIV</code> runs.</em>
+</div>
+
+<style>
+    body * {
+        margin: 10px;
+        border: 1px solid blue;
+    }
+</style>
+
+<form onclick="alert('form')">FORM
+    <div onclick="alert('div')">DIV
+        <p onclick="alert('p')">P</p>
+    </div>
+</form>
+
+<body onclick="alert(`the bubbling doesn't reach here`)">
+    <button onclick="event.stopPropagation()">Click me</button>
+</body>
