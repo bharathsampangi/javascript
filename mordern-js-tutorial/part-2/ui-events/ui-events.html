@@ -7,3 +7,13 @@
         }
     }
 </script>
+
+<b ondblclick="alert('dblclick')">Double-click me</b>
+
+Before...
+<b ondblclick="alert('dblclick')" onmousedown="return false">Double-click me</b>
+...After
+
+Before...
+<b ondblclick="getSelection().removeAllRanges()">Double-click me</b>
+...After
