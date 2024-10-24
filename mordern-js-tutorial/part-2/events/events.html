@@ -365,3 +365,74 @@ or
         return false
     }
 </script>
+
+<input value="Focus works" onfocus="this.value=''" />
+<input onmousedown="return false" onfocus="this.value=''" value="Click me" />
+
+<button>Right click for browser context menu</button>
+
+<button oncontextmenu="alert('Draw our menu'); return false">
+    Right-click for our context menu
+</button>
+
+<p>Right-click here for the document context menu</p>
+<button id="elem">Right-click here for the button context menu</button>
+
+<script>
+    elem.oncontextmenu = function(event) {
+        event.preventDefault();
+        alert('Button context menu')
+    }
+
+    document.oncontextmenu = function(event) {
+        if(event.defaultPrevented) return;
+
+        event.preventDefault()
+        alert('Document context menu')
+    }
+</script>
+
+<pre id="rabbit"> 
+    |\   /| 
+     \|_|/ 
+     /. .\ 
+    =\_Y_/= 
+     {>o<} 
+  </pre>
+  
+  <script>
+    function hide() {
+        let event = new CustomEvent("hide", {
+            cancelable: true
+        })
+        if(!rabbit.dispatchEvent(event)) {
+            alert('the action was prevented by a handler')
+        } else {
+            rabbit.hidden = true
+        }
+    }
+
+    rabbit.addEventListener('hide', function(event) {
+        if(confirm("Call preventDefault?")) {
+            event.preventDefault()
+        }
+    })
+
+    setTimeout(hide, 2000)
+  </script>
+
+<button id="menu">Menu (click me)</button>
+
+<script>
+    menu.onclick = function() {
+        alert(1)
+
+        menu.dispatchEvent(new CustomEvent("menu-open", {
+            bubbles: true
+        }))
+
+        alert(2)
+    }
+
+    document.addEventListener('menu-open', () => alert('nested'))
+</script>

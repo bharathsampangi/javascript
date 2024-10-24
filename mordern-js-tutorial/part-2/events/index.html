@@ -1,1 +1,15 @@
-<input />
+<button id="menu">Menu (click me)</button>
+
+<script>
+    menu.onclick = function() {
+        alert(1)
+
+        setTimeout(() => menu.dispatchEvent(new CustomEvent("menu-open", {
+            bubbles: true
+        })))
+
+        alert(2)
+    }
+
+    document.addEventListener('menu-open', () => alert('nested'))
+</script>
