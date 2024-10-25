@@ -1,0 +1,124 @@
+<form>
+    <input type="radio" name="age" value="10" />
+    <input type="radio" name="age" value="20" />
+</form>
+
+<script>
+    let form = document.forms[0]
+
+    let ageElems = form.elements.age
+
+    alert(ageElems[0].value)
+</script>
+
+<body>
+    <form id="form">
+        <fieldset name="userFields">
+            <legend>info</legend>
+            <input name="login" type="text" />
+        </fieldset>
+    </form>
+
+    <script>
+        alert(form.elements.login)
+
+        let fieldset = form.elements.userFields
+
+        alert(fieldset.elements.login == form.elements.login)
+    </script>
+</body>
+
+<form id="form">
+    <input name="login" />
+</form>
+
+<script>
+    alert(form.elements.login == form.login)
+
+    form.login.name = "username"
+
+    alert(form.elements.login)
+    alert(form.elements.username)
+
+    alert(form.username == form.login)
+</script>
+
+<form id="form">
+    <input type="text" name="login" />
+</form>
+
+<script>
+    let login = form.login
+
+    alert(login.form)
+</script>
+
+<select id="select">
+    <option value="apple">Apple</option>
+    <option value="pear">Pear</option>
+    <option value="banana">Banana</option>
+</select>
+
+<script>
+    // select.options[2].selected = true
+    // select.selectedIndex = 2
+    select.value = banana
+</script>
+
+<select id="select" multiple>
+    <option value="blues" selected>Blues</option>
+    <option value="rock" selected>Rock</option>
+    <option value="classic">Classic</option>
+</select>
+
+<script>
+    let selected = Array.from(select.options)
+        .filter(option => option.selected)
+        .map(option => option.value)
+
+    alert(selected)
+
+    let option = new Option("Pop", "pop")
+    select.append(option)
+</script>
+
+<select id="genres"> 
+    <option value="rock">Rock</option> 
+    <option value="blues" selected>Blues</option>
+</select>
+
+<script>
+    let option1 = new Option("Classic", "classic", true, true)
+
+    genres.append(option1)
+</script>
+
+<style>
+    .invalid {
+        border-color: red;
+    }
+
+    #error {
+        color: red;
+    }
+</style>
+
+Your email please: <input type="email" id="input" />
+
+<div id="error"></div>
+
+<script>
+    input.onblur = function() {
+        if(!input.value.includes('@')) {
+            input.classList.add('invalid')
+            error.innerHTML = 'Please enter a correct email'
+        }
+    }
+
+    input.onfocus = function() {
+        if(this.classList.contains('invalid')) {
+            input.classList.remove('invalid')
+            error.innerHTML = ''
+        }
+    }
+</script>
