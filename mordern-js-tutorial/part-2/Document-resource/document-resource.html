@@ -1,0 +1,144 @@
+<script>
+    function ready() {
+        alert("DOM is ready")
+
+        alert(`Image size: ${img.offsetWidth} x ${img.offsetHeight}`)
+    }
+
+    document.addEventListener("DOMContentLoaded", ready)
+</script>
+
+<img id="img" src="https://en.js.cx/clipart/train.gif?speed=1&cache=0" />
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        alert("DOM ready!")
+    })
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.js"></script>
+
+<script>
+    alert('Library loaded, Inline script executed')
+</script>
+
+<script>
+    window.onload = function() {
+        alert('Page loaded')
+
+        alert(`Image size: ${img.offsetWidth} x ${img.offsetHeight}`)
+    }
+</script>
+
+<img src="https://en.js.cx/clipart/train.gif?speed=1&cache=0" id="img" />
+
+<script>
+    let analyticsData = {}
+    
+    window.addEventListener('unload', function() {
+        navigator.sendBeacon("/analytics", analyticsData)
+    })
+</script>
+
+<script>
+    window.onbeforeunload = function() {
+        console.log("Leaving now")
+        return "There are unsaved changes. Leave now?"
+    }
+</script>
+
+<script>
+    log('initial readyState', document.readyState)
+
+    document.addEventListener('readystatechange', () => console.log(document.readyState))
+
+    document.addEventListener('DOMContentLoaded', function() {
+        log('DOMContentLoaded')
+    })
+
+    window.onload = function() { log('window load') }
+</script>
+
+<iframe src="iframe.html" onload="log('iframe onload')" />
+
+<img src="http://en.js.cx/clipart/train.gif" />
+
+<script>
+    img.onload = () => log('img onload')
+</script>
+
+<p>...content before script...</p>
+
+<script src="https://javascript.info/article/script-async-defer/long.js?speed=1"></script>
+
+<p>...content after script...</p>
+
+<p>...content before script...</p>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => console.log('DOM Content loaded after defer scripts'))
+</script>
+
+<script defer src="https://javascript.info/article/script-async-defer/long.js"></script>
+<script defer src="https://javascript.info/article/script-async-defer/small.js"></script>
+
+<p>...content after script...</p>
+
+<p>...content before script...</p>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => console.log('DOM Ready!'))
+</script>
+
+<script async src="https://javascript.info/article/script-async-defer/long.js"></script>
+<script async src="https://javascript.info/article/script-async-defer/small.js"></script>
+
+<p>...content after script...</p>
+
+<body></body>
+<script>
+    function loadScript(src) {
+        let script = document.createElement('script');
+        script.src = src;
+        src.async = false
+        document.body.append(script);
+    }
+
+    loadScript("https://javascript.info/article/script-async-defer/long.js"); 
+    loadScript("https://javascript.info/article/script-async-defer/small.js");
+</script>
+
+<script>
+    let script = document.createElement('script')
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.js'
+    document.head.append(script)
+
+    script.onload = function() {
+        alert(_)
+    }
+</script>
+
+<script>
+    let script = document.createElement('script')
+    script.src = 'https://no-script.com/404'
+    document.head.append(script)
+ 
+    script.onerror = function(err) {
+     alert(`Error loading: ${this.src}`)
+    }
+ </script>
+
+<body></body>
+<script>
+    let img = document.createElement('img')
+    img.src = 'https://js.cx/clipart/train.gif'
+    document.body.append(img)
+
+    img.onload = function() {
+        alert(`Image loaded width: ${img.width}, height: ${img.height}`)
+    }
+
+    img.onerror = function() {
+        alert("Error occured while loading image")
+    }
+</script>
