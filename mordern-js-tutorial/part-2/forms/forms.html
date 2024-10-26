@@ -142,3 +142,48 @@ Your email please: <input type="email" id="input" />
         }
     }
 </script>
+
+Click the first item and press Tab. Keep track of the order. Please note that many subsequent tabs can move the focus out of the iframe with the example.
+<ul>
+    <li tabindex="1">One</li>
+    <li tabindex="0">Zero</li>
+    <li tabindex="2">Two</li>
+    <li tabindex="-1">Minus One</li>
+</ul>
+
+<style>
+    li {cursor: pointer;}
+    :focus { outline: 1px dashed green; }
+</style>
+
+<form id="form">
+    <input type="text" name="name" value="Name" />
+    <input type="text" name="surname" value="Surname" />
+</form>
+
+<style>
+    .focused {
+        outline: 1px solid red;
+    }
+</style>
+
+<script>
+    form.addEventListener("focus", () => form.classList.add('focused'), true)
+    form.addEventListener("blur", () => form.classList.remove('focused'), true)
+</script>
+
+<form id="form">
+    <input type="text" name="name" value="Name" />
+    <input type="text" name="surname" value="Surname" />
+</form>
+
+<style>
+    .focused {
+        outline: 1px solid red
+    }
+</style>
+
+<script>
+    form.addEventListener('focusin', () => form.classList.add('focused'))
+    form.addEventListener('focusout', () => form.classList.remove('focused'))
+</script>
