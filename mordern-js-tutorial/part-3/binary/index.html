@@ -1,0 +1,14 @@
+<script>
+    let link = document.createElement('a')
+    link.download = 'hello.txt'
+
+    let blob = new Blob(['Hello World, I am here'], { type: 'text/plain' })
+
+    let reader = new FileReader()
+    reader.readAsDataURL(blob)
+
+    reader.onload = function() {
+        link.href = reader.result
+        link.click()
+    }
+</script>

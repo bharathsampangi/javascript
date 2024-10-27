@@ -1,0 +1,90 @@
+<button id="button">Click me</button>
+
+<script>
+    window.open('https://javascript.info')
+
+    button.onclick = () => {
+        // window.open('https://javascript.info')
+        
+        setTimeout(() => window.open('https://javascript.info'), 3000)
+    }
+</script>
+
+<script>
+    let params = `scrollbars=no,resizeable=no,status=no,location=no,menubar=no,width=0,height=0,left=-1000,height=-1000`;
+    window.open('/', 'test', params)
+</script>
+
+<script>
+    let params1 = `scrollbars=no,resizeable=no,status=no,location=no,menubar=no,width=600,height=300,left=100,height=100`;
+    window.open('/', 'test', params1)
+</script>
+
+<script>
+    let newWin = window.open('about:blank', 'hello', 'width:300,height:300')
+
+    newWin.document.write('Hello, World')
+</script>
+
+
+<script>
+    let newWindow = window.open('/part-3/frames-windows/index.html', 'example', 'width=600,height:300')
+    newWindow.focus()
+
+    // alert(newWindow.location.href)
+
+    newWindow.onload = function() {
+        let html = `<div style="font-size:30px">Welcome!</div>`
+        newWindow.document.body.insertAdjacentHTML('afterbegin', html)
+    }
+</script>
+
+<script>
+    let newWin1 = window.open('about:blank', "hello", "width:200,height:200px");
+
+    newWin1.document.write(
+        "<script>window.opener.document.body.innerHTML='Test'<\/script>"
+    )
+</script>
+
+<script>
+    let win = window.open('/', 'example', 'width:300,height:300')
+
+    win.onload = function() {
+        win.close()
+
+        alert(this.closed)
+    }
+</script>
+
+<iframe src="https://www.example.com" id="iframe"></iframe>
+
+<script>
+    iframe.onload = function() {
+        let iframeWindow = iframe.contentWindow
+        try{
+            let doc = iframe.contentDocument
+        }
+        catch(err) {
+            alert(err)
+        }
+
+        try {
+            let href = iframe.contentWindow.location.href
+        } catch(e) {
+            alert(e)
+        }
+
+        iframe.contentWindow.location = '/'
+
+        iframe.onload = null
+    }
+</script>
+
+<iframe src="/" id="iframe"></iframe>
+
+<script>
+    iframe.onload = function() {
+        iframe.contentDocument.body.prepend("Hello, World")
+    }
+</script>
