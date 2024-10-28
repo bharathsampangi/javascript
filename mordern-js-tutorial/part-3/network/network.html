@@ -1,0 +1,22 @@
+<script>
+    async function call() {
+        let url = 'https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits'
+        let response = await fetch(url)
+
+        if(response.ok) {
+            let json = await response.json()
+        } else {
+            alert('HTTP-Error: '+response.status)
+        }
+    }
+
+    call()
+</script>
+
+<script>
+    fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits')
+        .then(response => response.json())
+        .then(commits => {
+            alert(commits[0].author.login)
+        })
+</script>

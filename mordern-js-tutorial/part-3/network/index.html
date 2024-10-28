@@ -1,14 +1,9 @@
 <script>
-    async function call() {
-        let url = 'https://api.github.com/repos/javascript-tutorial/en.javascript'
-        let response = await fetch(url)
+    async function getImage() {
+        let response = await fetch('favicon.png')
 
-        if(response.ok) {
-            let json = await response.json()
-        } else {
-            alert('HTTP-Error: '+response.status)
-        }
+        let blob = await response.blob()
+
+        let img = document.createElement('img')
     }
-
-    call()
 </script>
