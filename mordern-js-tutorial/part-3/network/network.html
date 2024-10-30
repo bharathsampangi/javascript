@@ -56,3 +56,139 @@
 
     call()
 </script>
+
+<form id="formElem">
+    <input type="text" name="firstName" value="John" />
+    Picture: <input type="file" name="picture" accept="image/*" />
+    <input type="submit" />
+</form>
+
+<script>
+    formElem.onsubmit = async (e) => {
+        e.preventDefault()
+
+        let response = await fetch('/article/formdata/post/user-avatar', {
+            method: 'POST',
+            body: new FormData(formElem)
+        })
+
+        let result = await response.json()
+
+        alert(result.message)
+    }
+</script>
+
+<body>
+    <canvas id="canvasElem" width="100" height="80" style="border: 1px solid" ></canvas>
+
+    <input type="button" value="Submit" onclick="submit()" />
+
+    <script>
+        canvasElem.onmousemove = function(e) {
+            let ctx = canvasElem.getContext('2d');
+            ctx.lineTo(e.clientX, e.clientY);
+            ctx.stroke()
+        }
+
+        async function submit() {
+            let imageBlob = await new Promise(resolve => canvasElem.toBlob(resolve, 'image/png'))
+
+            let formData = new FormData()
+            formData.append("firstName", "John")
+            formData.append("image", imageBlob, "image/png")
+
+            let response = await fetch('/article/formdata/post/image-form', {
+                method: 'POST',
+                body: formData
+            })
+            let result = await response.json()
+            alert(result.message)
+        }
+    </script>
+</body>
+
+<!-- https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits?per_page=100 -->
+
+<script>
+    (async () => {
+        let response = await fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits?per_page=100')
+
+        const reader = response.body.getReader()
+
+        const contentLength = +response.headers.get('Content-Length')
+
+        let recievedLength = 0
+
+        let chunks = []
+
+        while(true) {
+            const {done, value} = await reader.read()
+
+            if(done) {
+                break;
+            }
+
+            chunks.push(value)
+            recievedLength += value.length
+
+            console.log(`Recieved ${recievedLength} of ${contentLength}`)
+        }
+
+        let chunksAll = new Uint8Array(recievedLength)
+        let position = 0
+        for(let chunk of chunks) {
+            chunksAll.set(chunk, position)
+            position += chunk.length
+        }
+
+        let result = new TextDecoder("utf-8").decode(chunksAll)
+
+        let commits = JSON.parse(result)
+        alert(commits[0].author.login)
+
+    })()
+</script>
+
+<script>
+    (async () => {
+        let controller = new AbortController()
+
+        setTimeout(() => controller.abort(), 1000)
+
+        try {
+            let response = await fetch('https://javascript.info/article/fetch-abort/demo/hang', {
+                signal: controller.signal
+            })
+        } catch(err) {
+            if(err.name == 'AbortError') {
+                alert('Aborted')
+            } else {
+                throw err
+            }
+        }
+    })()
+</script>
+
+<script>
+    (async () => {
+        let urls = ['https://javascript.info/article/fetch-abort/demo/hang', 'https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits']
+
+        let controller = new AbortController()
+
+        let fetchJobs = urls.map(url => fetch(url, {
+            signal: controller.signal
+        }))
+
+        controller.abort()
+
+        try {
+            let results = await Promise.all(fetchJobs)
+        } catch(e) {
+            if(e.name == 'AbortError') {
+                alert('Aborted')
+            } else {
+                throw e
+            }
+        }
+    })()
+</script>
