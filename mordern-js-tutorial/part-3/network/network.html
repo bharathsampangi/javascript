@@ -192,3 +192,26 @@
         }
     })()
 </script>
+
+<script>
+    (async () => {
+        let urls = [
+            'https://javascript.info/article/fetch-abort/demo/hang', 
+            'https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits'
+        ]
+
+        let controller = new AbortController()
+
+        let ourJob = new Promise((resolve, reject) => {
+            controller.signal.addEventListener('abort', reject)
+        })
+
+        let fetchJobs = urls.map(url => fetch(url, {
+            signal: controller.signal
+        }))
+
+        let results = await Promise.all([...fetchJobs, ourJob])
+
+        controller.abort()
+    })()
+</script>
