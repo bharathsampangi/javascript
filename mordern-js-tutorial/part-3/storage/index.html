@@ -1,0 +1,10 @@
+<script>
+    document.cookie = "user=John";
+    
+    let name = "my name"
+    let value = "John Smith"
+
+    document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value)
+
+    alert(document.cookie)
+</script>
